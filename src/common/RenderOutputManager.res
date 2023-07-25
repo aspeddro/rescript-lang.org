@@ -2,13 +2,11 @@ module Transpiler = {
   @module("../ffi/removeImportsAndExports") external transpile: string => string = "default"
 
   let run = code =>
-    `
-      (function () {
-        ${transpile(code)}
-        const root = document.getElementById("root");
-        ReactDOM.render(App.make(), root);
-      })();
-    `
+    `(function () {
+  ${transpile(code)}
+  const root = document.getElementById("root");
+  ReactDOM.render(App.make(), root);
+})();`
 }
 
 module Frame = {
